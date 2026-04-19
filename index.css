@@ -48,6 +48,44 @@ body.dark-mode h1 {
   align-items: center;
 }
 
+.category-group {
+  width: 100%;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.category-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eef2f7;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.category-toggle input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.category-toggle span {
+  font-size: 0.95rem;
+}
+
+body.dark-mode .category-toggle {
+  background: #575757;
+  border-color: #666;
+}
+
 .filters label {
   margin-right: 5px;
   color: inherit;

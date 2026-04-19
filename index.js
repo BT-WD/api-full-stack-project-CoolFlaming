@@ -1,10 +1,15 @@
-const categorySelect = document.getElementById('category');
+const categoryInputs = document.querySelectorAll('input[name="category"]');
 const typeSelect = document.getElementById('type');
 const safeModeCheckbox = document.getElementById('safeMode');
 const multiJokeCheckbox = document.getElementById('multiJoke');
 const darkModeCheckbox = document.getElementById('darkMode');
 const jokeContainer = document.getElementById('jokeContainer');
 const getJokeBtn = document.getElementById('getJokeBtn');
+
+function getSelectedCategories() {
+  const selected = Array.from(categoryInputs).filter(input => input.checked).map(input => input.value);
+  return selected.length ? selected.join(',') : 'Any';
+}
 
 darkModeCheckbox.addEventListener('change', () => {
   document.body.classList.toggle('dark-mode');
@@ -18,7 +23,7 @@ if (localStorage.getItem('darkMode') === 'true') {
 }
 
 async function fetchJoke() {
-  const category = categorySelect.value;
+  const category = getSelectedCategories();
   const type = typeSelect.value;
   const safeMode = safeModeCheckbox.checked;
   const multiJoke = multiJokeCheckbox.checked;
