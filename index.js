@@ -2,8 +2,20 @@ const categorySelect = document.getElementById('category');
 const typeSelect = document.getElementById('type');
 const safeModeCheckbox = document.getElementById('safeMode');
 const multiJokeCheckbox = document.getElementById('multiJoke');
+const darkModeCheckbox = document.getElementById('darkMode');
 const jokeContainer = document.getElementById('jokeContainer');
 const getJokeBtn = document.getElementById('getJokeBtn');
+
+darkModeCheckbox.addEventListener('change', () => {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', darkModeCheckbox.checked);
+});
+
+// Load dark mode preference on page load
+if (localStorage.getItem('darkMode') === 'true') {
+  darkModeCheckbox.checked = true;
+  document.body.classList.add('dark-mode');
+}
 
 async function fetchJoke() {
   const category = categorySelect.value;
